@@ -1,67 +1,91 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-bg.jpg";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, Star } from "lucide-react";
 
 const HeroSection = () => {
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-hero opacity-90"></div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-primary/10 via-background to-accent/5">
+      {/* Decorative elements */}
+      <div className="absolute top-20 left-20 text-primary/20 animate-pulse">
+        <Star className="w-8 h-8" />
+      </div>
+      <div className="absolute top-40 right-32 text-accent/30 animate-pulse" style={{ animationDelay: '1s' }}>
+        <Star className="w-6 h-6" />
+      </div>
+      <div className="absolute bottom-32 left-16 text-primary/30 animate-pulse" style={{ animationDelay: '2s' }}>
+        <Star className="w-4 h-4" />
       </div>
       
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center text-white">
-        <div className="max-w-4xl mx-auto animate-fadeInUp">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Welcome to{" "}
-            <span className="bg-gradient-to-r from-white to-primary-light bg-clip-text text-transparent">
-              Touch The Stone
-            </span>
-          </h1>
+      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left Content */}
+        <div className="space-y-8 animate-fade-in">
+          <div className="space-y-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              <span className="font-script text-primary text-4xl md:text-5xl lg:text-6xl">Achieve</span>
+              <br />
+              <span className="text-foreground">Your Business Goal!</span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed">
+              Let's embark on a digital journey, immersing ourselves in diverse strategies and creating unforgettable growth as we transform your business!
+            </p>
+          </div>
           
-          <p className="text-xl md:text-2xl mb-4 font-semibold text-primary-light">
-            Achieve Your Business Goal with Us!!
-          </p>
-          
-          <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-90 leading-relaxed">
-            Digital marketing company in Coimbatore offering SEO, SMO/SMM, PPC, Web Design, 
-            Web Development, and E-commerce development to grow online sales and revenue worldwide.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Button 
-              variant="outline-white" 
+              variant="hero" 
               size="lg"
               className="group"
+              onClick={scrollToContact}
             >
-              Get in Touch
+              Get Started
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             
             <Button 
-              variant="ghost" 
+              variant="outline" 
               size="lg"
-              className="text-white hover:bg-white/10"
+              className="group"
             >
-              <Play className="w-5 h-5 mr-2" />
+              <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
               Watch Demo
             </Button>
           </div>
         </div>
         
-        {/* Floating elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
-      </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+        {/* Right Content */}
+        <div className="relative animate-scale-in" style={{ animationDelay: '0.3s' }}>
+          <div className="relative">
+            {/* Main illustration placeholder */}
+            <div className="w-full h-96 lg:h-[500px] bg-gradient-primary rounded-3xl flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent opacity-90 rounded-3xl"></div>
+              <div className="relative z-10 text-white text-center space-y-4">
+                <div className="w-24 h-24 bg-white/20 rounded-full mx-auto flex items-center justify-center backdrop-blur-sm">
+                  <span className="text-3xl font-bold">TTS</span>
+                </div>
+                <h3 className="text-xl font-semibold">Digital Marketing Excellence</h3>
+                <p className="text-white/80">Growing businesses worldwide</p>
+              </div>
+            </div>
+            
+            {/* Floating testimonial badge */}
+            <div className="absolute -top-4 -left-4 bg-white rounded-2xl p-4 shadow-soft animate-float">
+              <div className="flex items-center space-x-3">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 bg-gradient-primary rounded-full border-2 border-white"></div>
+                  <div className="w-8 h-8 bg-gradient-to-r from-accent to-primary rounded-full border-2 border-white"></div>
+                  <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full border-2 border-white"></div>
+                </div>
+                <div className="text-sm">
+                  <div className="font-semibold text-foreground">500+ Happy</div>
+                  <div className="text-muted-foreground">Clients</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
